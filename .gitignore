@@ -6,3 +6,6 @@ dist
 env
 .idea
 **/*.pyc
+**/cms*
+# test result files
+**/data/*_result.txt

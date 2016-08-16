@@ -1,7 +1,7 @@
 pyt-cli
 =========
 
-*A pytton command line program in Python.*
+*A python command line program in Python.*
 
 
 Purpose

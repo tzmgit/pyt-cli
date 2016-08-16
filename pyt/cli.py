@@ -3,12 +3,20 @@ pyt
 
 Usage:
   pyt hello
+  pyt gid  <file> <pattern> [--append] [--output=OUTFILE]
   pyt -h | --help
   pyt --version
+  pyt cms [--port=PORT] [--server=SERVER] --tests=SELECTED_TESTS
+  pyt cms m [--port=PORT] [--server=SERVER] --tests=SELECTED_TESTS
 
 Options:
   -h --help                         Show this screen.
   --version                         Show version.
+  -s, --server SERVER               App server [default: localhost]
+  -p, --port PORT                   Port for app server [default: 3000]
+  -t, --tests SELECTED_TESTS        Select test suites or test cases to run. Defaults to run all test.
+  -o, --output OUTFILE              Output file for result.
+  --append                          Update test ids but not changing existing ids.
 
 Examples:
   pyt hello
