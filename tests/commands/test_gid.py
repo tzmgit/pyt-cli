@@ -9,7 +9,7 @@ class TestGid(TestCase):
 
     def test_append_id(self):
         out_file = './data/test_gid_append_result.txt'
-        output = popen(['pyt', 'gid', './data/test_gid_append.txt', 't.', '--append', '--output=' + out_file], stdout=PIPE).communicate()[0]
+        output = popen(['pyt', 'gid', './data/test_gid_append.txt', 'aud.', '--append', '--output=' + out_file], stdout=PIPE).communicate()[0]
         print output
         with open(out_file) as f:
             lines = f.readlines()

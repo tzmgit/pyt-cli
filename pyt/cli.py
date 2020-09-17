@@ -3,11 +3,12 @@ pyt
 
 Usage:
   pyt hello
-  pyt gid  <file> <pattern> [--append] [--output=OUTFILE]
+  pyt gid  <file> [--append] [--pattern=PATTERN] [--output=OUTFILE]
   pyt -h | --help
   pyt --version
   pyt cms [--port=PORT] [--server=SERVER] --tests=SELECTED_TESTS
   pyt cms m [--port=PORT] [--server=SERVER] --tests=SELECTED_TESTS
+  pyt cms2 --tests=SELECTED_TESTS
 
 Options:
   -h --help                         Show this screen.
@@ -16,7 +17,9 @@ Options:
   -p, --port PORT                   Port for app server [default: 3000]
   -t, --tests SELECTED_TESTS        Select test suites or test cases to run. Defaults to run all test.
   -o, --output OUTFILE              Output file for result.
+  --pattern PATTERN                        Regular expression to find test ids [default: ^(\w+\.)+(\w+)?$].
   --append                          Update test ids but not changing existing ids.
+  m                                 set CMS_MOCK to true
 
 Examples:
   pyt hello

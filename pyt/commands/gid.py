@@ -22,14 +22,14 @@ class Gid(Base):
                     break
         return summary, sum_rno
 
-    def verify(self, in_f, summary):
+    def verify(self, in_f, summary, pattern):
         """Verify test id in test file."""
         print 'verifying test ids...'
         ids = set()
         with open(in_f) as f:
             for line in f:
                 test_id = line.split(' ')[0]
-                if re.match(self._pattern, test_id):
+                if re.match(pattern, test_id):
                     if test_id in ids:
                         print 'duplicate test id: {}'.format(test_id)
                     else:
@@ -43,8 +43,8 @@ class Gid(Base):
                         id_num = int(id_num)
                         if id_num <= 0:
                             print 'ivalid test case id: {}'.format(test_id)
-                        elif id_base in summary and id_num > self._summary[id_base]:
-                            print 'test case id {} does not match summary: {}: {}'.format(test_id, id_base, self._summary[id_base])
+                        elif id_base in summary and id_num > summary[id_base]:
+                            print 'test case id {} does not match summary: {}: {}'.format(test_id, id_base, summary[id_base])
         print 'done'
 
     def run(self):
@@ -53,13 +53,12 @@ class Gid(Base):
 
         in_f = self.options['<file>']
 
-        pattern = self.options['<pattern>']
+        pattern = self.options['--pattern'] or '^(\w+\.)+(\w+)?$'
         is_append = self.options['--append']
         out_f = self.options['--output']
 
         out_f = out_f or in_f
         content = []
-
 
         if is_append:
             summary, sum_rno = self.read_summary(in_f)
@@ -97,4 +96,4 @@ class Gid(Base):
         with open(out_f, "w") as f:
             f.writelines(content)
         print 'done'
-        self.verify(in_f, summary)
+        self.verify(in_f, summary, pattern)
