@@ -2,6 +2,7 @@ pyt-cli
 =========
 
 *A pytton command line program in Python.*
+This repo is dated.
 
 
 Purpose
